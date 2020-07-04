@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MediaCapture and Streams API</title>
+    <meta name="viewport" content="width=device-width">
+    
+</head>
+<body>
+    
+
+
+        <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCBTeNl-4pxV70kvYq7PQ6414oyQYaR8SY",
+            authDomain: "voyage-743ef.firebaseapp.com",
+            databaseURL: "https://voyage-743ef.firebaseio.com",
+            projectId: "voyage-743ef",
+            storageBucket: "voyage-743ef.appspot.com",
+            messagingSenderId: "213241584712",
+            appId: "1:213241584712:web:736beff8a6adf55fd00c7d"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        function hi(){
+        firebase.database().ref("Test").set({
+            name:"hello"}
+        );}
+        hi();
+            
+        
+
+var mouseState=false;
+       
+        var k=0;
+       function setup() {
+           createCanvas(400, 400);
+           background(10);
+
+       }
+
+       function draw() {
+           if(mouseState)paint();
+           //var userId = firebase.auth().currentUser.uid;
+                return firebase.database().ref('test').once('value').then(function(snapshot) {
+                var xx = (snapshot.val() && snapshot.val().x) || 'Anonymous';
+                var yy = (snapshot.val() && snapshot.val().y) || 'Anonymous';
+                ellipse(xx,yy,10,10);
+                // ...
+               //console.log(username);
+                });
+       }
+       function mousePressed(){    
+           if(mouseState)
+               mouseState=false;
+           else
+               mouseState=true;
+       
+       }
+
+       function paint(){
+           noStroke();
+           ellipse(mouseX, mouseY, 10, 10);
+           firebase.database().ref("test").set({
+            x:mouseX,
+            y:mouseY}
+           
+        );
+        
+       }
+        
+
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
