@@ -58,7 +58,7 @@ var mouseState=false;
            background(10);
 
        }
-    var prev2X=mouseX,prev2Y=mouseY;
+    var prev2X=0,prev2Y=0;
        function draw() {
            if(mouseState)paint();
            //var userId = firebase.auth().currentUser.uid;
@@ -80,7 +80,7 @@ var mouseState=false;
                mouseState=true;
        
        }
-    var prevX,prevY;
+    var prevX=0,prevY=0;
        function paint(){
            
            stroke(126);
