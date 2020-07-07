@@ -58,14 +58,16 @@ var mouseState=false;
            background(10);
 
        }
-
+    var prev2X,prev2Y;
        function draw() {
            if(mouseState)paint();
            //var userId = firebase.auth().currentUser.uid;
                 return firebase.database().ref('test').once('value').then(function(snapshot) {
                 var xx = (snapshot.val() && snapshot.val().x) || 'Anonymous';
                 var yy = (snapshot.val() && snapshot.val().y) || 'Anonymous';
-                ellipse(xx,yy,10,10);
+                line(xx,yy,prev2X,prev2Y);
+                 prev2x=xx;
+                    prev2Y=yy;
                 // ...
                //console.log(username);
                 });
