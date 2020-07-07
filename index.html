@@ -65,9 +65,10 @@ var mouseState=false;
                 return firebase.database().ref('test').once('value').then(function(snapshot) {
                 var xx = (snapshot.val() && snapshot.val().x) || 'Anonymous';
                 var yy = (snapshot.val() && snapshot.val().y) || 'Anonymous';
-                line(xx,yy,prev2X,prev2Y);
-                 prev2x=xx;
+                    prev2x=xx;
                     prev2Y=yy;
+                line(xx,yy,prev2X,prev2Y);
+                 
                 // ...
                //console.log(username);
                 });
@@ -81,10 +82,11 @@ var mouseState=false;
        }
     var prevX,prevY;
        function paint(){
-           stroke(126);
-           line(mouseX, mouseY, prevX, prevY);
            prevX=mouseX;
            prevY=mouseY;
+           stroke(126);
+           line(mouseX, mouseY, prevX, prevY);
+           
            firebase.database().ref("test").set({
             x:mouseX,
             y:mouseY}
