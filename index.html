@@ -77,10 +77,12 @@ var mouseState=false;
                mouseState=true;
        
        }
-
+    var prevX,prevY;
        function paint(){
-           noStroke();
-           ellipse(mouseX, mouseY, 10, 10);
+           stroke(126);
+           line(mouseX, mouseY, prevX, prevY);
+           prevX=mouseX;
+           prevY=mouseY;
            firebase.database().ref("test").set({
             x:mouseX,
             y:mouseY}
