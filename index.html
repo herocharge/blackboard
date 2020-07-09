@@ -54,7 +54,7 @@
 
 var mouseState=false;
        
-        var k=0;var prev2X,prev2Y,prevX,prevY;
+        var k=0;var prev2X,prev2Y,prevX,prevY,xx,yy;
        function setup() {
            createCanvas(400, 400);
            background(10);
@@ -66,21 +66,22 @@ var mouseState=false;
            if(mouseState)paint();
            //var userId = firebase.auth().currentUser.uid;
                 return firebase.database().ref('test').once('value').then(function(snapshot) {
-                var xx = (snapshot.val() && snapshot.val().x) || 'Anonymous';
-                var yy = (snapshot.val() && snapshot.val().y) || 'Anonymous';
+                 xx = (snapshot.val() && snapshot.val().x) || 'Anonymous';
+                 yy = (snapshot.val() && snapshot.val().y) || 'Anonymous';
                     prev2X= (snapshot.val() && snapshot.val().prevx) || 'Anonymous';
                 prev2Y = (snapshot.val() && snapshot.val().prevy) || 'Anonymous';
                     
                 line(xx,yy,prev2X,prev2Y);
-                    firebase.database().ref("test").set({
-            prevx:xx,
-            prevy:yy}
-           
-        );
+                   
                  
                 // ...
                //console.log(username);
                 });
+            firebase.database().ref("test").set({
+            prevx:xx,
+            prevy:yy}
+           
+        );
        }
        function mousePressed(){    
            if(mouseState)
