@@ -66,10 +66,10 @@ var mouseState=false;
            if(mouseState)paint();
            //var userId = firebase.auth().currentUser.uid;
                 return firebase.database().ref('test').once('value').then(function(snapshot) {
-                 xx = (snapshot.val() && snapshot.val().x) || 'Anonymous';
-                 yy = (snapshot.val() && snapshot.val().y) || 'Anonymous';
-                    prev2X= (snapshot.val() && snapshot.val().prevx) || 'Anonymous';
-                prev2Y = (snapshot.val() && snapshot.val().prevy) || 'Anonymous';
+                 xx = (snapshot.val() && snapshot.val().x) || 0;
+                 yy = (snapshot.val() && snapshot.val().y) || 0;
+                    prev2X= (snapshot.val() && snapshot.val().prevx) || 0;
+                prev2Y = (snapshot.val() && snapshot.val().prevy) || 0;
                     
                 line(xx,yy,prev2X,prev2Y);
                    
