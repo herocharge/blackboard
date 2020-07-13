@@ -99,10 +99,15 @@ var mouseState=false;
            prevY=mouseY;
            firebase.database().ref("test").set({
             x:mouseX,
-            y:mouseY}
+            y:mouseY,
+            }
            
         );
-        
+         firebase.database().ref("test").set({
+            prevx:prevX,
+            prevy:prevY}
+           
+        );
        }
         
 
