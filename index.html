@@ -68,8 +68,8 @@ var mouseState=false;
                 return firebase.database().ref('test').once('value').then(function(snapshot) {
                  xx = (snapshot.val() && snapshot.val().x) || 0;
                  yy = (snapshot.val() && snapshot.val().y) || 0;
-                    prev2X= (snapshot.val() && snapshot.val().prevx) || 0;
-                prev2Y = (snapshot.val() && snapshot.val().prevy) || 0;
+                    prev2X= (snapshot.val() && snapshot.val().prevx) || prev2X;
+                prev2Y = (snapshot.val() && snapshot.val().prevy) || prev2Y;
                     
                 line(xx,yy,prev2X,prev2Y);
                    
