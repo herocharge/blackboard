@@ -72,16 +72,16 @@ var mouseState=false;
                 prev2Y = (snapshot.val() && snapshot.val().prevy) || prev2Y;
                     
                 line(xx,yy,prev2X,prev2Y);
-                   
-                 
-                // ...
-               //console.log(username);
-                });
-            firebase.database().ref("test").set({
+                   firebase.database().ref("test").set({
             prevx:xx,
             prevy:yy}
            
         );
+                 
+                // ...
+               //console.log(username);
+                });
+            
        }
        function mousePressed(){    
            if(mouseState)
